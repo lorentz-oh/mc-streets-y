@@ -1,0 +1,182 @@
+<!DOCTYPE Map [
+<!ENTITY datasource-settings SYSTEM "datasource_settings.xml">
+]>
+
+<Map background-color="black" srs="+proj=tpeqd +to_meter=0.75 +lon_1=55.938542 +lat_1=54.693125 +lon_2=55.97738 +lat_2=54.776581">
+	<Style name="Landuse">
+     <Rule>
+       <Filter> [leisure] = 'park' or [natural] = 'wood' or [landuse] = 'forest'</Filter>
+       <PolygonSymbolizer fill="#ffffff" gamma="0.0"/>
+     </Rule>
+   </Style>
+
+   <Style name="Polygons">
+     <Rule>
+       <PolygonSymbolizer fill="#ffffff" gamma="0.0"/>
+     </Rule>
+   </Style>
+
+   <Style name="Buildings">
+     <Rule>
+		<!-- <Filter> not([building] = null)</Filter> раскоментируй когда будет БД -->
+       <LineSymbolizer stroke="#ffffff" stroke-width="1"/>
+     </Rule>
+   </Style>
+
+   <Style name="Rails">
+	   <Rule>
+		   <Filter> not([railway] = null)</Filter>
+       <LineSymbolizer stroke="#ffffff" stroke-width="1"/>
+     </Rule>
+   </Style>
+
+   <Style name="Water">
+     <Rule>
+       <Filter>[natural] = 'water'</Filter>
+       <PolygonSymbolizer fill="#ffffff" gamma="0.0"/>
+     </Rule>
+	 <Rule>
+       <Filter>[waterway] = 'river'</Filter>
+       <LineSymbolizer stroke="#ffffff" stroke-width="1" />
+     </Rule>
+   </Style>
+
+   <Style name="Road">
+     <Rule>
+	   <!--
+       <Filter> [type] = 'footway' </Filter>
+       <LineSymbolizer stroke="#ffffff" stroke-width="1"/>
+     </Rule>
+     <Rule>
+       <Filter>[lanes] = 2 </Filter>
+       <LineSymbolizer stroke="#ffffff" stroke-width="7"/>
+     </Rule>
+     <Rule>
+       <Filter>[lanes] = 3 </Filter>
+       <LineSymbolizer stroke="#ffffff" stroke-width="11"/>
+     </Rule>
+     <Rule>
+	<Filter>[lanes] = 4 </Filter>
+	<LineSymbolizer stroke="#ffffff" stroke-width="15"/>
+     </Rule>
+     <Rule>
+	<Filter>[lanes] = 5 </Filter>
+	<LineSymbolizer stroke="#ffffff" stroke-width="19"/>
+     </Rule>
+     <Rule>
+	<Filter>[lanes] = 6 </Filter>
+	<LineSymbolizer stroke="#ffffff" stroke-width="23"/>
+     </Rule>
+     <Rule>
+	<Filter>[lanes] = 7 </Filter>
+	<LineSymbolizer stroke="#ffffff" stroke-width="27"/>
+     </Rule>
+     <Rule>
+	<Filter>[lanes] = 8 </Filter>
+	<LineSymbolizer stroke="#ffffff" stroke-width="31"/>
+     </Rule>
+     <Rule>
+	<Filter>[lanes] = 9 </Filter>
+	<LineSymbolizer stroke="#ffffff" stroke-width="35"/>
+     </Rule>
+     <Rule>
+       <Filter>[lanes] = 10 </Filter>
+       <LineSymbolizer stroke="#ffffff" stroke-width="39"/>
+     </Rule>
+     <Rule>
+		 <Filter> not([highway] = null) </Filter>
+			 -->
+		 <LineSymbolizer stroke="#ffffff" stroke-width="1"/>
+     </Rule>
+  </Style>
+  
+  <Layer name="Buildings" srs="+init=epsg:4326">
+    <StyleName>Buildings</StyleName>
+  <Datasource>
+	<Parameter name="file">../DATA/shape_old/buildings.shp</Parameter>
+    <Parameter name="type">shape</Parameter>
+  </Datasource>
+  </Layer>
+
+<Layer name="Roads" srs="+init=epsg:4326">
+  <StyleName>Road</StyleName>
+  <Datasource>
+	<Parameter name="file">../DATA/shape_old/roads.shp</Parameter>
+    <Parameter name="type">shape</Parameter>
+  </Datasource>
+</Layer>
+
+<!--
+  <Layer name="Buildings" srs="+init=epsg:4326">
+    <StyleName>Buildings</StyleName>
+  <Datasource>
+    <Parameter name="table">
+       planet_osm_polygon
+    </Parameter>
+    &datasource-settings;
+  </Datasource>
+  </Layer>
+
+<Layer name="Roads" srs="+init=epsg:4326">
+  <StyleName>Road</StyleName>
+  <Datasource>
+	&datasource-settings;
+        <Parameter name="table">
+          planet_osm_line
+        </Parameter>
+  </Datasource>
+</Layer>
+
+<Layer name="Rails" srs="+init=epsg:4326">
+  <StyleName>Rails</StyleName>
+  <Datasource>
+	&datasource-settings;
+        <Parameter name="table">
+			planet_osm_line
+		</Parameter>
+  </Datasource>
+</Layer>
+
+<Layer name="Landuse" srs="+init=epsg:4326">
+  <StyleName>Landuse</StyleName>
+  <Datasource>
+    &datasource-settings;
+    <Parameter name="table">
+		planet_osm_polygon
+	</Parameter>
+  </Datasource>
+</Layer>
+
+
+<Layer name="Water" srs="+init=epsg:4326">
+  <StyleName>Water</StyleName>
+ 
+  <Datasource>
+    <Parameter name="table">
+		planet_osm_polygon
+	</Parameter>
+    &datasource-settings;
+  </Datasource>
+</Layer>
+		-->
+
+<Layer name="Extent" srs="+init=epsg:4326">
+  <StyleName>Polygons</StyleName>
+ 
+  <Datasource>
+	  <Parameter name="type">geojson</Parameter>
+	  <Parameter name="file">merge_test.geojson</Parameter>
+  </Datasource>
+</Layer>
+
+<Layer name="Ufa" srs="+init=epsg:4326">
+  <StyleName>Polygons</StyleName>
+ 
+  <Datasource>
+	  <Parameter name="type">geojson</Parameter>
+	  <Parameter name="file">ufa.geojson</Parameter>
+  </Datasource>
+</Layer>
+
+</Map>
+

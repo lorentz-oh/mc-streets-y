@@ -1,0 +1,151 @@
+<Map background-color="black" srs="+proj=tpeqd +lon_1=55.938542 +lat_1=54.693125 +lon_2=55.97738 +lat_2=54.776581">
+   <Style name="Landuse">
+     <Rule>
+       <Filter> [type] = 'forest' or [type] = 'park' </Filter>
+       <PolygonSymbolizer fill="#ffffff" gamma="0.0"/>
+     </Rule>
+   </Style>
+
+   <Style name="Buildings">
+     <Rule>
+       <Filter>not([building] = 'huy')</Filter>
+       <LineSymbolizer stroke="#ffffff" stroke-width="1"/>
+     </Rule>
+   </Style>
+
+   <Style name="Water">
+     <Rule>
+       <Filter>[natural] = 'water'</Filter>
+       <PolygonSymbolizer fill="#ffffff" gamma="0.0"/>
+     </Rule>
+     <Rule>
+       <Filter>[waterway] = 'river'</Filter>
+       <LineSymbolizer stroke="#ffffff" stroke-width="1" />
+     </Rule>
+   </Style>
+
+   <Style name="Road">
+     <Rule>
+        <Filter> [type] = 'footway' </Filter>
+        <LineSymbolizer stroke="#ffffff" stroke-width="1"/>
+     </Rule>
+     <Rule>
+	<Filter>[lanes] = 2 </Filter>
+	<LineSymbolizer stroke="#ffffff" stroke-width="7"/>
+     </Rule>
+     <Rule>
+	<Filter>[lanes] = 3 </Filter>
+	<LineSymbolizer stroke="#ffffff" stroke-width="11"/>
+     </Rule>
+     <Rule>
+	<Filter>[lanes] = 4 </Filter>
+	<LineSymbolizer stroke="#ffffff" stroke-width="15"/>
+     </Rule>
+     <Rule>
+	<Filter>[lanes] = 5 </Filter>
+	<LineSymbolizer stroke="#ffffff" stroke-width="19"/>
+     </Rule>
+     <Rule>
+	<Filter>[lanes] = 6 </Filter>
+	<LineSymbolizer stroke="#ffffff" stroke-width="23"/>
+     </Rule>
+     <Rule>
+	<Filter>[lanes] = 7 </Filter>
+	<LineSymbolizer stroke="#ffffff" stroke-width="27"/>
+     </Rule>
+     <Rule>
+	<Filter>[lanes] = 8 </Filter>
+	<LineSymbolizer stroke="#ffffff" stroke-width="31"/>
+     </Rule>
+     <Rule>
+	<Filter>[lanes] = 9 </Filter>
+	<LineSymbolizer stroke="#ffffff" stroke-width="35"/>
+     </Rule>
+     <Rule>
+       <Filter>[lanes] = 10 </Filter>
+       <LineSymbolizer stroke="#ffffff" stroke-width="39"/>
+     </Rule>
+     <Rule>
+       <ElseFilter/>
+       <LineSymbolizer stroke="#ffffff" stroke-width="3">
+     </Rule>
+  </Style>
+  
+  <Style name="raster">
+    <Rule>
+      <RasterSymbolizer
+        opacity="1.0"
+        scaling="bilinear"
+        mode="multiply2">
+
+        <RasterColorizer default-mode="linear" default-color="black" epsilon="0.001">
+              <stop color="#000000"        value = "76"  />
+              <stop color="#ffffff"         value = "322"/>
+        </RasterColorizer>
+      </RasterSymbolizer>
+    </Rule>
+  </Style>
+
+  <Layer name="Buildings" srs="+init=epsg:4326">
+    <StyleName>Buildings</StyleName>
+  <Datasource>
+	<Parameter name="type">postgis</Parameter>
+	<Parameter name="password">password</Parameter>
+	<Parameter name="host">localhost</Parameter>
+	<Parameter name="port">5432</Parameter>
+	<Parameter name="user">osm</Parameter>
+	<Parameter name="dbname">osm</Parameter>
+	<Parameter name="estimate_extent">false</Parameter>
+  </Datasource>
+  </Layer>
+
+<Layer name="Elevation" srs="+init=epsg:4326">
+    <StyleName>raster</StyleName>
+    <Datasource>
+      <Parameter name="file">../DATA/N054E055/DSM.tif</Parameter>
+      <Parameter name="type">raster</Parameter>
+    </Datasource>
+</Layer>
+
+<Layer name="Roads" srs="+init=epsg:4326">
+  <StyleName>Road</StyleName>
+  <Datasource>
+	<Parameter name="type">postgis</Parameter>
+	<Parameter name="password">password</Parameter>
+	<Parameter name="host">localhost</Parameter>
+	<Parameter name="port">5432</Parameter>
+	<Parameter name="user">osm</Parameter>
+	<Parameter name="dbname">osm</Parameter>
+	<Parameter name="estimate_extent">false</Parameter>
+  </Datasource>
+</Layer>
+
+<Layer name="Landuse" srs="+init=epsg:4326">
+  <StyleName>Landuse</StyleName>
+  <Datasource>
+	<Parameter name="type">postgis</Parameter>
+	<Parameter name="password">password</Parameter>
+	<Parameter name="host">localhost</Parameter>
+	<Parameter name="port">5432</Parameter>
+	<Parameter name="user">osm</Parameter>
+	<Parameter name="dbname">osm</Parameter>
+	<Parameter name="estimate_extent">false</Parameter>
+  </Datasource>
+</Layer>
+
+
+<Layer name="Water" srs="+init=epsg:4326">
+  <StyleName>Water</StyleName>
+  <Datasource>
+	<Parameter name="type">postgis</Parameter>
+	<Parameter name="password">password</Parameter>
+	<Parameter name="host">localhost</Parameter>
+	<Parameter name="port">5432</Parameter>
+	<Parameter name="user">osm</Parameter>
+	<Parameter name="dbname">osm</Parameter>
+	<Parameter name="estimate_extent">false</Parameter>
+  </Datasource>
+</Layer>
+
+</Map>
+

@@ -1,0 +1,17 @@
+<Surface name="Surface">
+	<Range id="0"  add="0" data="0" from="0" to="4096" mode="absolute" smooth="none"/>
+	<Range id="3"  add="0" data="0" from="-4096" to="0" mode="elevation" smooth="none"/>
+	<Range id="44" add="1" data="0" from="-1" to="0" mode="elevation" smooth="data"/>
+</Surface>
+
+<Layers>
+	<Layer name="Roads">
+		<Range id="4"  add="0" data="0" from="-4096" to="0" mode="elevation" smooth="data"/>
+		<Range id="32" add="1" data="0" from="-5"    to="-4" mode="elevation" smooth="data"/>
+	</Layer>
+
+	<Layer name="Buildings">
+		<Range id="45"  add="0" data="0" from="-4096" to="40" mode="elevation" smooth="data"/>
+	</Layer>
+
+</Layers>

@@ -1,0 +1,16 @@
+mccx=1260
+mccz=-844
+mode=generate
+
+elev_from=76
+elev_to=322
+dataset=/home/andrew/mc_mapper/DATA/N054E055/ALPSMLC30_N054E055_DSM.tif.orig
+debug_style=debug_style.xml
+region_dir=/home/andrew/mc_mapper/region
+style=world_style.xml
+scheme=scheme.xml
+
+datasource_1=/usr/lib/mapnik/3.0/input/raster.input
+datasource_2=/usr/lib/mapnik/3.0/input/postgis.input
+datasource_3=/usr/lib/mapnik/3.0/input/geojson.input
+datasource_4=/usr/lib/mapnik/3.0/input/shape.input
